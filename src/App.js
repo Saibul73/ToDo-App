@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import './App.css';
 import AddTaskForm from './components/addTAskForm.jsx';
 import UpdateForm from './components/updateForm.jsx';
@@ -9,6 +8,7 @@ import ToDo from './components/toDo.jsx';
 function App() {
   // todo task state;
   const [toDo,setToDo]=useState([])
+  const [id,setId]=useState(0)
 
   // temp state;
   const [newTask,setNewTask]=useState('')
@@ -17,10 +17,11 @@ function App() {
   //add task
   const addTask=()=>{
     if(newTask){
-      let num = toDo.length+1
-      let newEntry = {id:num,title:newTask,status:false}
+      setId(id+1)
+      let newEntry = {id:id,title:newTask,status:false}
       setToDo([...toDo,newEntry])
       setNewTask('')
+      console.log({id});
     }
   }
 
